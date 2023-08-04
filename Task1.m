@@ -68,6 +68,8 @@ end
 % Display the voltage drops
 figure;
 plot(CIT.voltage_drops);
+ylabel('voltage drops');
+xlabel('inderruption indices');
 
 % Initialize an array to store the time constants
 CIT.time_constants = zeros(length(CIT.interruption_indices), 1);
@@ -114,6 +116,8 @@ CIT.time_constants_valid_pos = CIT.time_constants_valid(CIT.time_constants_valid
 % Display the time constants
 figure;
 plot(CIT.time_constants_valid_pos);
+ylabel('time constant');
+xlabel('index interruptions');
 
 % Calculate the average time constant
 CIT.t_avg = mean(CIT.time_constants_valid_pos);
@@ -130,7 +134,14 @@ CIT.C_dl = CIT.t_avg ./ CIT.R2;
 % Display the polarization resistance and double-layer capacitance
 figure;
 plot(CIT.R2);
+xlabel('index interruptions');
+ylabel('Polarization Resistance');
+
+figure;
 plot(CIT.C_dl);
+xlabel('index interruptions');
+ylabel('Double-layer capacitance');
+
 
 % Filter SoC and voltage data based on SoC values greater than or equal to 10%
 filtered_indices = (CSVcalc.SoCDischarge) >= 10;
@@ -142,6 +153,7 @@ V_filtered = CSVcalc.VoltageDischarge(filtered_indices);
 V_sorted = V_filtered(sort_idx);
 
 % Plot voltage versus SoC
+figure;
 plot(SoC_sorted, V_sorted);
 xlim([10 100]);
 xlabel('State of Charge (SoC)');
