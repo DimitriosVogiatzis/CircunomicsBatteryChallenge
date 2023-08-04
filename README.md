@@ -1,5 +1,6 @@
 # CircunomicsBatteryChallenge
-1st Task
+
+Run Task1.m in Matlab version 2018b or previous.
 
 I have calculated the Capacity in Ah (=3.58e+08)
 
